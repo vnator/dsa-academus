@@ -15,4 +15,3 @@ export function quickSort(arr: number[]): number[] {
 
   return [...quickSort(less), pivot, ...quickSort(high)];
 }
-
