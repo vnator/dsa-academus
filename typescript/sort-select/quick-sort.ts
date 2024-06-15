@@ -15,3 +15,11 @@ export function quickSort(arr: number[]): number[] {
 
   return [...quickSort(less), pivot, ...quickSort(high)];
 }
+<<<<<<< HEAD
+=======
+
+export function quickSortPartition(arr: number[]): number[] {
+  return arr;
+}
+
+>>>>>>> 6bf885a (atualizaçoes dos algoritmos)
