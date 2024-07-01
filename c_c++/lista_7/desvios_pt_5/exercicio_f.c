@@ -1,4 +1,4 @@
-i#include <stdio.h>
+#include <stdio.h>
 
 int main() {
     int codigo;
@@ -7,28 +7,28 @@ int main() {
 
     switch (codigo) {
         case 0:
-            printf("Domingo\n");
+            printf("\nDomingo");
             break;
         case 1:
-            printf("Segunda-feira\n");
+            printf("\nSegunda-feira");
             break;
         case 2:
-            printf("Terça-feira\n");
+            printf("\nTerça-feira");
             break;
         case 3:
-            printf("Quarta-feira\n");
+            printf("\nQuarta-feira");
             break;
         case 4:
-            printf("Quinta-feira\n");
+            printf("\nQuinta-feira");
             break;
         case 5:
-            printf("Sexta-feira\n");
+            printf("\nSexta-feira");
             break;
         case 6:
-            printf("Sábado\n");
+            printf("\nSábado");
             break;
         default:
-            printf("Código inválido. Digite um valor entre 0 e 6.\n");
+            printf("\nCódigo inválido. Digite um valor entre 0 e 6.");
             break;
     }
 

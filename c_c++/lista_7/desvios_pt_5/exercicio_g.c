@@ -1,25 +1,10 @@
 #include <stdio.h>
 
 int main(void) {
-    // Dados do produto
-    float preco_item = 5.00;
-    int quantidade_itens;
+    float preco_item = 5.00, percentual_frete;
+    char* nome_cliente, cidade, bairro, rua, cep, nome_loja, cnpj;
+    int numero_casa, codigo_regiao, quantidade_itens;
 
-    // Dados do cliente
-    char* nome_cliente;
-    char* cidade;
-    char* bairro;
-    char* rua;
-    char* cep;
-    char* nome_loja;
-    char* cnpj;
-    int numero_casa;
-
-    // Dados da região
-    int codigo_regiao;
-    float percentual_frete;
-
-    // Entrada de dados
     printf("Digite o nome do cliente: ");
     scanf("%s", nome_cliente);
     printf("Digite o nome da loja: ");
