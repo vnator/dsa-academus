@@ -2,7 +2,7 @@
 
 int main(void) {
     float preco_item = 5.00, percentual_frete;
-    char* nome_cliente, cidade, bairro, rua, cep, nome_loja, cnpj;
+    char *nome_cliente, *cidade, *bairro, *rua, *cep, *nome_loja, *cnpj;
     int numero_casa, codigo_regiao, quantidade_itens;
 
     printf("Digite o nome do cliente: ");

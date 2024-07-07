@@ -1,5 +1,5 @@
-#include <math.h>
 #include <stdio.h>
+#include <math.h>
 
 int main() {
   int a, b, c, escolha;
@@ -31,11 +31,11 @@ int main() {
       printf("\nDivisao: ");
       break;
     default:
-      printf("\nOpcao secreta, potencia: ");
+      printf("\nOpcao secreta a soma do dobro dos dois: ");
+      c = a*2 + b*2;
       break;
   }
 
-  c = pow(a, b);
   printf("%d", c);
   
   return 0;
