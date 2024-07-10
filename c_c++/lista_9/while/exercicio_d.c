@@ -1,3 +1,4 @@
+#include <string.h>
 #include <stdio.h>
 
 int main() {
@@ -6,15 +7,14 @@ int main() {
     while (1) {
         scanf("%d %d", &x, &y);
 
-        if (x == null || y == null) {
+        if (!x || !y)
           break;
-        }
 
         if (x > 0 && y > 0) {
           printf("primeiro\n");
-        } else if (x <= 0 && y > 0) {
+        } else if (x < 0 && y > 0) {
           printf("segundo\n");
-        } else if (x <= 0 && y <= 0) {
+        } else if (x < 0 && y < 0) {
           printf("terceiro\n");
         } else {
           printf("quarto\n");
