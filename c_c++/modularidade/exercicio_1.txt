@@ -1,0 +1,16 @@
+1. Encontre o erro em cada um dos seguintes segmentos de programa e apresente a versão
+correta:
+
+a)
+void triangleArea (); // ponto e virgula apos o parenteses
+double product // declaração de argumento fora do escopo da função
+{
+  product = (base * height)/2 // sem ponto e virgula
+  printf(“Area: %d”, product);
+}
+
+b)
+void foo (float a) {
+  float a; // rederação do argumento já declarado
+  printf("%f\n",a);
+}
