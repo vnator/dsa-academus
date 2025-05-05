@@ -38,11 +38,27 @@ int main() {
 
   printf("Matriz 1:\n");
   matriz_print(m1);
+
+  printf("Diagonal principal da matriz 1:\n");
+  float *dp = matriz_dprincipal(m1);
+  printf("{");
+
+  int size = sizeof(dp) / sizeof(dp[0]);
+
+  for (int i = 0; i <= size; i++) {
+
+    printf("%0.2f - posicao i: %d", dp[i], i);
+
+    if (i < size) {
+      printf(", ");
+    }
+  }
+  printf("}\n");
+
   matriz_atualiza(m1, 1, 1, 0);
   matriz_atualiza(m1, 2, 2, 0);
   matriz_atualiza(m1, 3, 3, 0);
   printf("Atualizada:\n");
-  matriz_print(m1);
 
   printf("Matriz 2:\n");
   matriz_print(m2);

@@ -72,3 +72,13 @@ void matriz_print(Matriz *m) {
       printf("\n");
   }
 }
+
+float *matriz_dprincipal(Matriz *m) {
+  float *dp = malloc(m->c * sizeof(float));
+
+  for (int i = 1; i <= m->c; i++) {
+    dp[i - 1] = matriz_le(m, i, i);
+  }
+
+  return dp;
+}

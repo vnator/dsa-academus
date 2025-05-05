@@ -8,3 +8,5 @@ void matriz_atualiza(Matriz *m, int l, int c, float v);
 int matriz_linhas(Matriz *m);
 int matriz_colunas(Matriz *m);
 void matriz_print(Matriz *m);
+float *matriz_dprincipal(Matriz *m);
+float *matriz_dsecundaria(Matriz *m);
