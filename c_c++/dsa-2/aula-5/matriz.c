@@ -74,6 +74,12 @@ void matriz_print(Matriz *m) {
 }
 
 float *matriz_dprincipal(Matriz *m) {
+
+  if (m->l != m->c) {
+    printf("A matriz não é quadrada\n");
+    return NULL;
+  }
+
   float *dp = malloc(m->c * sizeof(float));
 
   for (int i = 1; i <= m->c; i++) {
@@ -81,4 +87,20 @@ float *matriz_dprincipal(Matriz *m) {
   }
 
   return dp;
+}
+
+float *matriz_dsecundaria(Matriz *m) {
+
+  if (m->l != m->c) {
+    printf("A matriz não é quadrada\n");
+    return NULL;
+  }
+
+  float *ds = malloc(m->c * sizeof(float));
+
+  for (int i = m->c; i >= 1; i--) {
+    ds[i - 1] = matriz_le(m, m->l - (i - 1), i);
+  }
+
+  return ds;
 }

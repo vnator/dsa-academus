@@ -55,6 +55,22 @@ int main() {
   }
   printf("}\n");
 
+  printf("Diagonal secundaria da matriz 1:\n");
+  float *ds = matriz_dsecundaria(m1);
+  printf("{");
+
+  int size_s = sizeof(ds) / sizeof(ds[0]);
+
+  for (int i = 0; i <= size_s; i++) {
+
+    printf("%0.2f - posicao i: %d", ds[i], i);
+
+    if (i < size_s) {
+      printf(", ");
+    }
+  }
+  printf("}\n");
+
   matriz_atualiza(m1, 1, 1, 0);
   matriz_atualiza(m1, 2, 2, 0);
   matriz_atualiza(m1, 3, 3, 0);
