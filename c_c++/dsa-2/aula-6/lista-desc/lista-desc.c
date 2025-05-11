@@ -41,7 +41,7 @@ bool lista_inserir(ListaDesc *lista, int val) {
 int lista_buscar(ListaDesc *lista, int val) {
   int r = lista->n - 1;
   int l = 0;
-  
+
   while (l <= r) {
     int m = (l + r) / 2;
 
