@@ -10,7 +10,7 @@ public class Lista {
   public int getMaiorDiferencaConsecutiva() {
     int maiorDiferenca = 0;
 
-    for (int int = 0; i < lista.lenght - 1; i++) {
+    for (int i = 0; i < lista.length - 1; i++) {
       if (lista[i] > lista[i + 1]) {
         int diferenca = lista[i] - lista[i + 1];
         if (diferenca > maiorDiferenca) {
@@ -27,8 +27,9 @@ public class Lista {
   }
 
   public void tipoOrdenacao() {
-    bool creascente = true;
-    bool decrescente = true;
+    boolean creascente = true;
+    boolean decrescente = true;
+    
 
     for (int i = 0; i < lista.length - 1; i++) {
       if (lista[i] > lista[i + 1]) {
@@ -65,6 +66,6 @@ public class Lista {
 
     System.out.println("Maior que o natural: " + qtdMaiorQNatural);
     System.out.println("Menor que o natural: " + qtdMenorQNatural);
-    System.out.println("Igual ao natural: " + qtdIgualQNatural);:
+    System.out.println("Igual ao natural: " + qtdIgualQNatural);
   }
 }
