@@ -1,0 +1,10 @@
+a) Resposta:
+
+Ao executar o programa como esta descobrimos que o atributo estilo é privado e não pode ser alterado diretamente.
+
+Logo em seguida crio metodos emcapsuladores para aessar e alterar estilo, e com um metodo publico setEstilo, defino os valores, isso corrige o problema e executa a classe Shape corretamente.
+
+
+c) Resposta:
+
+Ao tentar complilar o codigo tornando altura e largura privados, recebemos erros por estar tentando modificar atributos privados fora do escopo permitidol;
