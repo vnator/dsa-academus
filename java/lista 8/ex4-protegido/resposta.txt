@@ -1,0 +1,6 @@
+Saida:
+x: 8  // primeiro printa o numero no construtor
+x: 12 // depois printa o numero que foi alterado apos o metodo construtor de SubProtegido ter sido instanciada.
+
+i é private para que o acesso direto seja exclusivo da class Protegido, mantendo assim o encapsulamento do atributo.
+Já os metodos de acesso e altegracao sao protected para que apenas aqueles que pertencerem ao pacote ou tiverem herança do Protegido consigam alterar ou recuperar o valor do atributo i

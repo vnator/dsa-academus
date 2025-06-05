@@ -1,0 +1,3 @@
+Construção de A. // a super classe que antecede todas é a primeira a ser isntanciada, pois quem a extende executa primeiro seu metodo construtor
+Construção de B. // a super classe B extende A e logo ela eh executada antes de C que a sucede mas depois de A
+Construção de C. // a sub classe C estende B que extende A, ela é a ultima a ser instanciada 

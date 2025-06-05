@@ -1,0 +1,1 @@
+2) Resposta: Atraves do metodo super(), ou simplesmente pela instancia se não houverem parametros;

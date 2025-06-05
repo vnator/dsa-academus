@@ -1,0 +1,1 @@
+4) resposta: Não o super deve ser a primeira instrução dentro do metodo construtor da subclasse preservando a hirearquia e mantendo toda a logica declarada na subclasse a exata execução subsequente da logica da superclasse.

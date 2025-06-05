@@ -1,0 +1,1 @@
+3) resposta: Sim, o metodo super pode e deverá receber os mesmos parametros do construtor da classe pai, caso contrário, o compilador não saberá qual construtor chamar.

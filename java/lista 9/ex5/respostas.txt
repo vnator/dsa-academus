@@ -1,0 +1,9 @@
+5) Respostas
+
+a) segue o diagrama ./uml.svg
+
+b) m1, m2, m3
+
+c) m1, m2, m3, m4, m5
+
+d) m2, m3, m4, m5

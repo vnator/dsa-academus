@@ -1,0 +1,3 @@
+Computador() // Instancia pai executando o metodo construtor do Computador
+Notebook() // Instancia filha que extende pai executando o metodo construtor do Notebook quando instanciado após executar o pai
+Código: 12345 // metodo ligar dentro da instancia
