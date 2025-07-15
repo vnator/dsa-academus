@@ -1,60 +1,4 @@
-# Árvore Binária de Busca (BST)```
-arv-binaria/
-├──### Usando o Makefile:
-
-```bash
-make
-
-m### Estrutura do Nó (`No`)
-```c
-typed#### `ArvoreBinaria* criar_arvore()`
-- **Descrição**: Cria uma nova árvore binária vazia
-- **Retorno**: Ponteiro para a estrutura da árvore
-- **Complexidade**: O(1)
-
-#### `No* criar_no(int chave)`
-- **Descrição**: Cria um novo nó com a chave especificada
-- **Parâmetros**: `chave` - valor a ser armazenado no nó
-- **Retorno**: Ponteiro para o novo nó criado
-- **Complexidade**: O(1)
-
-#### `void destruir_arvore(ArvoreBinaria* arvore)`
-- **Descrição**: Libera toda a memória da árvore recursivamente
-- **Parâmetros**: `arvore` - ponteiro para a árvore a ser destruída
-- **Complexidade**: O(n)
-
-### Operações Principaisint chave;           
-    struct No* esquerda; 
-    struct No* direita;  
-    struct No* pai;      
-} No;
-```
-
-### Estrutura da Árvore (`ArvoreBinaria`)
-```c
-typedef struct {
-    No* raiz;           
-} ArvoreBinaria;
-```
-
-## Métodos Implementados
-
-### Funções Básicas de Gerenciamento```
-
-### Compilação manual:
-```bash
-gcc -Wall -Wextra -g -o main main.c arv_binaria.c
-./main
-```
-
-## Estrutura da Árvore
-├── arv_binaria.c      
-├── main.c             
-├── Makefile           
-└── README.md          
-```
-
-## Como Compilar e Executarntação em C
+# Árvore Binária de Busca (BST) - Implementação em C
 
 Este projeto implementa uma **Árvore Binária de Busca** completa em linguagem C, incluindo todas as operações fundamentais e funções auxiliares.
 
@@ -87,11 +31,11 @@ make --version
 
 ```
 arv-binaria/
-├── avr_binaria.h      # Header com definições e protótipos
-├── arv_binaria.c      # Implementação das funções
-├── main.c             # Programa principal com testes
-├── Makefile           # Script de compilação
-└── README.md          # Este arquivo
+├── avr_binaria.h      
+├── arv_binaria.c      
+├── main.c             
+├── Makefile           
+└── README.md          
 ```
 
 ## Como Compilar e Executar
@@ -99,13 +43,10 @@ arv-binaria/
 ### Usando o Makefile:
 
 ```bash
-# Compilar o projeto
 make
 
-# Compilar e executar os testes
 make run
 
-# Limpar arquivos compilados
 make clean
 ```
 
@@ -122,17 +63,17 @@ A árvore é implementada usando duas estruturas principais:
 ### Estrutura do Nó (`No`)
 ```c
 typedef struct No {
-    int chave;           // Valor armazenado no nó
-    struct No* esquerda; // Ponteiro para subárvore esquerda
-    struct No* direita;  // Ponteiro para subárvore direita
-    struct No* pai;      // Ponteiro para o nó pai
+    int chave;           
+    struct No* esquerda; 
+    struct No* direita;  
+    struct No* pai;      
 } No;
 ```
 
 ### Estrutura da Árvore (`ArvoreBinaria`)
 ```c
 typedef struct {
-    No* raiz;           // Ponteiro para o nó raiz
+    No* raiz;           
 } ArvoreBinaria;
 ```
 
@@ -155,8 +96,6 @@ typedef struct {
 - **Descrição**: Libera toda a memória da árvore recursivamente
 - **Parâmetros**: `arvore` - ponteiro para a árvore a ser destruída
 - **Complexidade**: O(n)
-
----
 
 ### Operações Principais
 
@@ -189,8 +128,6 @@ typedef struct {
   2. **Nó com um filho**: Substitui pelo filho
   3. **Nó com dois filhos**: Substitui pelo sucessor in-order
 
----
-
 ### Percursos da Árvore
 
 #### `void pre_ordem(No* no)`
@@ -213,8 +150,6 @@ typedef struct {
 - **Uso**: Útil para liberar memória ou calcular altura
 - **Complexidade**: O(n)
 - **Exemplo**: Para árvore com raiz 50, filhos 30 e 70: `30 70 50`
-
----
 
 ### Funções de Busca Especiais
 
@@ -252,4 +187,98 @@ typedef struct {
   1. Se tem subárvore esquerda: retorna o máximo da subárvore esquerda
   2. Senão: sobe até encontrar um ancestral que seja filho direito
 
----
+## Testes Implementados
+
+O programa `main.c` inclui testes abrangentes para validar todas as funcionalidades:
+
+### 1. **Teste de Inserção e Busca**
+- Insere múltiplos valores na árvore
+- Verifica se todos foram inseridos corretamente
+- Testa busca de valores existentes e inexistentes
+
+### 2. **Teste de Percursos**
+- Demonstra os três tipos de percurso
+- Mostra a ordem de visitação dos nós
+- Valida que o percurso em ordem retorna valores ordenados
+
+### 3. **Teste de Mínimo e Máximo**
+- Encontra os valores extremos da árvore
+- Valida que estão corretos
+
+### 4. **Teste de Sucessor e Predecessor**
+- Testa predecessor e sucessor para vários nós
+- Valida casos especiais (primeiro e último elemento)
+
+### 5. **Teste de Remoção**
+- Remove nós folha
+- Remove nós com um filho
+- Remove nós com dois filhos
+- Remove a raiz
+- Tenta remover valores inexistentes
+
+### 6. **Teste de Árvore Vazia**
+- Valida comportamento correto quando a árvore está vazia
+- Testa todas as operações em árvore vazia
+
+## Complexidades
+
+| Operação | Melhor Caso | Caso Médio | Pior Caso |
+|----------|-------------|------------|-----------|
+| Busca    | O(log n)    | O(log n)   | O(n)      |
+| Inserção | O(log n)    | O(log n)   | O(n)      |
+| Remoção  | O(log n)    | O(log n)   | O(n)      |
+| Percurso | O(n)        | O(n)       | O(n)      |
+
+**Nota**: O pior caso O(n) ocorre quando a árvore se torna uma lista ligada (completamente desbalanceada).
+
+## Exemplo de Uso
+
+```c
+#include "avr_binaria.h"
+
+int main() {
+    ArvoreBinaria* arvore = criar_arvore();
+    
+    inserir(arvore, 50);
+    inserir(arvore, 30);
+    inserir(arvore, 70);
+    
+    No* resultado = busca_chave(arvore, 30);
+    if (resultado) {
+        printf("Valor 30 encontrado!\n");
+    }
+    
+    printf("Valores em ordem: ");
+    em_ordem(arvore->raiz);
+    printf("\n");
+    
+    destruir_arvore(arvore);
+    
+    return 0;
+}
+```
+
+## Propriedades da BST
+
+Uma Árvore Binária de Busca mantém as seguintes propriedades:
+
+1. **Propriedade BST**: Para qualquer nó:
+   - Todos os valores na subárvore esquerda são menores
+   - Todos os valores na subárvore direita são maiores
+
+2. **Estrutura**: Cada nó tem no máximo dois filhos
+
+3. **Ordenação**: O percurso em ordem sempre retorna valores ordenados
+
+4. **Unicidade**: Não permite chaves duplicadas nesta implementação
+
+## Casos de Uso
+
+- **Busca eficiente** em conjuntos de dados ordenados
+- **Ordenação** de dados (através do percurso em ordem)
+- **Dicionários** e tabelas de símbolos
+- **Implementação de conjuntos** (sets)
+- **Algoritmos que precisam de acesso ordenado** aos dados
+
+**Autor**: Implementação para disciplina de Estruturas de Dados  
+**Data**: Julho 2025

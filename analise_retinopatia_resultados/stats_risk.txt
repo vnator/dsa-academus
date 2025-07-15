@@ -1,0 +1,35 @@
+--- Estatísticas Descritivas para 'risk' ---
+Nº de Observações: 394
+Média: 9.7
+Variância: 2.18
+Desvio Padrão: 1.48
+Coeficiente de Variação (CV): 15.21%
+
+Quartis:
+  25% (Q1): 9
+  50% (Mediana/Q2): 10
+  75% (Q3): 11
+
+Decis:
+  10% (D1): 8
+  20% (D2): 9
+  30% (D3): 9
+  40% (D4): 9
+  50% (D5): 10
+  60% (D6): 10
+  70% (D7): 11
+  80% (D8): 11
+  90% (D9): 12
+
+Percentis Chave:
+  1%: 6
+  5%: 7.3
+  10%: 8
+  90%: 12
+  95%: 12
+  99%: 12
+
+Assimetria: -0.338
+Curtose: 3.131
+
+

@@ -1,0 +1,35 @@
+--- Estatísticas Descritivas para 'age' ---
+Nº de Observações: 394
+Média: 20.78
+Variância: 219.4
+Desvio Padrão: 14.81
+Coeficiente de Variação (CV): 71.27%
+
+Quartis:
+  25% (Q1): 10
+  50% (Mediana/Q2): 16
+  75% (Q3): 30
+
+Decis:
+  10% (D1): 5
+  20% (D2): 9
+  30% (D3): 11
+  40% (D4): 13
+  50% (D5): 16
+  60% (D6): 20
+  70% (D7): 25.1
+  80% (D8): 36
+  90% (D9): 45
+
+Percentis Chave:
+  1%: 1
+  5%: 3
+  10%: 5
+  90%: 45
+  95%: 50
+  99%: 56.07
+
+Assimetria: 0.808
+Curtose: 2.538
+
+
