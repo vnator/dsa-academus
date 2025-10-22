@@ -1,0 +1,205 @@
+ALGORITMO: Problema das Acácias - Reconexão de Famílias Élficas
+================================================================
+
+DESCRIÇÃO DO PROBLEMA:
+----------------------
+- Elfos vivem em habitações conectadas por pontes
+- Cada família = um componente conexo
+- Objetivo: reconectar famílias com custo mínimo após incêndio
+- Saída: [número de famílias] [custo mínimo total]
+
+ESTRUTURAS DE DADOS:
+-------------------
+
+ESTRUTURA Aresta:
+    ATRIBUTOS:
+        origem: inteiro
+        destino: inteiro  
+        peso: inteiro longo (long long)
+    
+    MÉTODO compararPorPeso(outra):
+        RETORNAR (peso < outra.peso)
+
+CLASSE UnionFind:
+    ATRIBUTOS PRIVADOS:
+        pai[]: array de inteiros (representa pai de cada elemento)
+        rank[]: array de inteiros (altura da árvore)
+    
+    MÉTODO PÚBLICO construtor(n):
+        INÍCIO
+            PARA i DE 0 ATÉ n-1 FAÇA
+                pai[i] ← i        // Cada elemento é pai de si mesmo
+                rank[i] ← 0       // Altura inicial é 0
+            FIM PARA
+        FIM
+    
+    MÉTODO PÚBLICO find(x):
+        // Encontra representante com compressão de caminho
+        INÍCIO
+            SE pai[x] ≠ x ENTÃO
+                pai[x] ← find(pai[x])    // Compressão de caminho
+            FIM SE
+            RETORNAR pai[x]
+        FIM
+    
+    MÉTODO PÚBLICO unite(x, y):
+        // Une dois conjuntos usando union by rank
+        INÍCIO
+            rootX ← find(x)
+            rootY ← find(y)
+            
+            SE rootX = rootY ENTÃO
+                RETORNAR FALSO    // Já estão no mesmo conjunto
+            FIM SE
+            
+            // Union by rank
+            SE rank[rootX] < rank[rootY] ENTÃO
+                pai[rootX] ← rootY
+            SENÃO SE rank[rootX] > rank[rootY] ENTÃO
+                pai[rootY] ← rootX
+            SENÃO
+                pai[rootY] ← rootX
+                rank[rootX] ← rank[rootX] + 1
+            FIM SE
+            
+            RETORNAR VERDADEIRO
+        FIM
+    
+    MÉTODO PÚBLICO contarComponentes(n):
+        // Conta componentes distintos apenas para vértices válidos (1 a n)
+        INÍCIO
+            visitado[] ← array booleano de tamanho (n+1) inicializado com FALSO
+            componentes ← 0
+            
+            PARA i DE 1 ATÉ n FAÇA
+                root ← find(i)
+                SE NÃO visitado[root] ENTÃO
+                    visitado[root] ← VERDADEIRO
+                    componentes ← componentes + 1
+                FIM SE
+            FIM PARA
+            
+            RETORNAR componentes
+        FIM
+
+ALGORITMO PRINCIPAL - PROBLEMA DAS ACÁCIAS:
+==========================================
+INÍCIO
+    LER n    // Número de habitações (1 a n)
+    
+    arestas ← lista vazia
+    
+    // Ler pontes para cada habitação de 1 a n-1
+    PARA i DE 1 ATÉ n-1 FAÇA
+        LER k    // Número de pontes da habitação i
+        
+        // Ler k pares (destino, custo)
+        PARA p DE 1 ATÉ k FAÇA
+            LER j, custo    // Ponte de i para j com custo
+            arestas.adicionar(nova Aresta(i, j, custo))
+        FIM PARA
+        
+        // Se k = 0, pode haver um 0 explícito na entrada
+        SE k = 0 ENTÃO
+            // Opcional: consumir 0 se presente
+        FIM SE
+    FIM PARA
+    
+    // PASSO 1: Contar quantas famílias (componentes conexos) existem
+    familias ← novo UnionFind(n + 1)
+    PARA CADA aresta EM arestas FAÇA
+        familias.unite(aresta.origem, aresta.destino)
+    FIM PARA
+    
+    numeroFamilias ← familias.contarComponentes(n)
+    
+    // PASSO 2: Encontrar custo mínimo para reconectar (MST global)
+    arestas.ordenarPorPeso()
+    
+    mst ← novo UnionFind(n + 1)
+    custoTotal ← 0 (inteiro longo)
+    
+    // Algoritmo de Kruskal para MST
+    PARA CADA aresta EM arestas FAÇA
+        SE mst.unite(aresta.origem, aresta.destino) ENTÃO
+            custoTotal ← custoTotal + aresta.peso
+        FIM SE
+    FIM PARA
+    
+    // Imprimir resultado
+    ESCREVER numeroFamilias, " ", custoTotal
+FIM
+
+FORMATO DE ENTRADA ESPECÍFICO:
+=============================
+
+Linha 1: N (número de habitações)
+Para cada habitação i de 1 a N-1:
+    Linha i+1: k j₁ c₁ j₂ c₂ ... jₖ cₖ
+    Onde:
+    - k = número de pontes da habitação i
+    - jₚ = habitação destino da p-ésima ponte
+    - cₚ = custo para reconstruir a p-ésima ponte
+    - Se k = 0, pode haver apenas "0" na linha
+
+EXEMPLO DETALHADO:
+=================
+
+ENTRADA:
+6
+2 2 1 3 3           // Habitação 1: 2 pontes → (1-2,1), (1-3,3)
+1 3 2               // Habitação 2: 1 ponte  → (2-3,2)  
+0                   // Habitação 3: 0 pontes
+2 6 4 5 6           // Habitação 4: 2 pontes → (4-6,4), (4-5,6)
+1 6 5               // Habitação 5: 1 ponte  → (5-6,5)
+
+PROCESSAMENTO:
+
+1. ARESTAS EXTRAÍDAS:
+   - (1,2,1), (1,3,3), (2,3,2), (4,6,4), (4,5,6), (5,6,5)
+
+2. CONTAGEM DE FAMÍLIAS:
+   - União das arestas: {1,2,3} e {4,5,6}
+   - Componentes: 2 famílias
+
+3. MST GLOBAL:
+   - Ordenação: (1,2,1), (2,3,2), (4,6,4), (5,6,5), (1,3,3), (4,5,6)
+   - Kruskal: (1,2,1) + (2,3,2) + (4,6,4) + (5,6,5) = 1+2+4+5 = 12
+
+4. SAÍDA: "2 12"
+
+CARACTERÍSTICAS DO ALGORITMO:
+============================
+
+1. COMPLEXIDADE DE TEMPO:
+   - Leitura: O(E)
+   - Contagem de componentes: O(E × α(V))
+   - Ordenação: O(E log E)
+   - MST (Kruskal): O(E × α(V))
+   - TOTAL: O(E log E)
+
+2. COMPLEXIDADE DE ESPAÇO:
+   - Arestas: O(E)
+   - Union-Find: O(V)
+   - TOTAL: O(E + V)
+
+3. TRATAMENTO DE CASOS ESPECIAIS:
+   - Habitações isoladas (k = 0)
+   - Múltiplas famílias desconectadas
+   - Valores grandes de custo (até 10⁶)
+   - Overflow prevenido com long long
+
+4. INVARIANTES:
+   - Cada família é um componente conexo maximal
+   - MST global conecta todas as famílias com custo mínimo
+   - Número de famílias ≥ 1
+   - Custo total ≥ 0
+
+DIFERENÇAS DA IMPLEMENTAÇÃO ORIGINAL:
+====================================
+
+1. PROBLEMA ESPECÍFICO: Reconexão de famílias élficas, não MST genérica
+2. ENTRADA ESPECIALIZADA: Formato k j₁ c₁ j₂ c₂ ... por habitação
+3. SAÍDA DUPLA: [famílias] [custo], não apenas custo
+4. LONG LONG: Suporte a custos grandes (até 10⁶ × 10⁶)
+5. CONTAGEM CORRETA: Apenas vértices válidos (1 a n)
