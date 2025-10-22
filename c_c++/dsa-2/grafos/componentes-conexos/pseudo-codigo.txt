@@ -1,0 +1,195 @@
+ALGORITMO: Encontrar Componentes Conexos em Grafos
+=================================================
+
+ESTRUTURAS DE DADOS:
+-------------------
+CLASSE GrafoComponentesConexos:
+    ATRIBUTOS PRIVADOS:
+        adj[]: array de listas (lista de adjacência do grafo)
+        visitado[]: array booleano (marca vértices visitados)
+        numVertices: inteiro (número total de vértices)
+    
+    MÉTODO PRIVADO dfs(vertice, componente):
+        // Busca em Profundidade (Depth-First Search)
+        INÍCIO
+            visitado[vertice] ← VERDADEIRO
+            componente.adicionar(vertice)
+            
+            PARA CADA vizinho EM adj[vertice] FAÇA
+                SE NÃO visitado[vizinho] ENTÃO
+                    dfs(vizinho, componente)
+                FIM SE
+            FIM PARA
+        FIM
+    
+    MÉTODO PÚBLICO construtor(v):
+        INÍCIO
+            numVertices ← v
+            adj.redimensionar(v)
+            visitado.redimensionar(v)
+        FIM
+    
+    MÉTODO PÚBLICO adicionarAresta(u, v):
+        INÍCIO
+            adj[u].adicionar(v)    // Adiciona v à lista de u
+            adj[v].adicionar(u)    // Adiciona u à lista de v (grafo não direcionado)
+        FIM
+    
+    MÉTODO PÚBLICO encontrarComponentesConexos():
+        INÍCIO
+            componentes ← lista vazia
+            
+            // Reinicia todos os vértices como não visitados
+            PARA i DE 0 ATÉ numVertices-1 FAÇA
+                visitado[i] ← FALSO
+            FIM PARA
+            
+            // Busca componentes conexos
+            PARA i DE 0 ATÉ numVertices-1 FAÇA
+                SE NÃO visitado[i] ENTÃO
+                    componente ← lista vazia
+                    dfs(i, componente)
+                    componente.ordenar()  // Ordena vértices em ordem crescente
+                    componentes.adicionar(componente)
+                FIM SE
+            FIM PARA
+            
+            RETORNAR componentes
+        FIM
+
+FUNÇÕES AUXILIARES:
+------------------
+FUNÇÃO charParaIndice(c):
+    INÍCIO
+        RETORNAR (c - 'a')    // Converte 'a'→0, 'b'→1, ..., 'z'→25
+    FIM
+
+FUNÇÃO indiceParaChar(i):
+    INÍCIO
+        RETORNAR ('a' + i)    // Converte 0→'a', 1→'b', ..., 25→'z'
+    FIM
+
+ALGORITMO PRINCIPAL:
+===================
+INÍCIO
+    LER n    // Número de casos de teste
+    
+    PARA caso DE 1 ATÉ n FAÇA
+        LER v, e    // Número de vértices e arestas
+        
+        // Criar novo grafo
+        grafo ← novo GrafoComponentesConexos(v)
+        
+        // Ler todas as arestas
+        PARA i DE 1 ATÉ e FAÇA
+            LER u, w    // Vértices da aresta
+            indiceU ← charParaIndice(u)
+            indiceW ← charParaIndice(w)
+            grafo.adicionarAresta(indiceU, indiceW)
+        FIM PARA
+        
+        // Encontrar componentes conexos
+        componentes ← grafo.encontrarComponentesConexos()
+        
+        // Ordenar componentes pelo menor vértice de cada um
+        componentes.ordenarPor(primeiroElemento)
+        
+        // Imprimir resultado
+        ESCREVER "Case #", caso, ":"
+        
+        PARA CADA componente EM componentes FAÇA
+            PARA CADA vertice EM componente FAÇA
+                ESCREVER indiceParaChar(vertice), ","
+            FIM PARA
+            ESCREVER nova_linha
+        FIM PARA
+        
+        ESCREVER componentes.tamanho(), " connected components"
+        ESCREVER nova_linha    // Linha em branco após cada caso
+        
+    FIM PARA
+FIM
+
+DETALHAMENTO DO ALGORITMO DFS:
+=============================
+
+OBJETIVO: Encontrar todos os vértices conectados a partir de um vértice inicial
+
+ENTRADA: 
+    - vertice: vértice inicial para busca
+    - componente: lista para armazenar vértices do componente atual
+
+PROCESSO:
+1. Marcar vértice atual como visitado
+2. Adicionar vértice ao componente atual
+3. Para cada vizinho não visitado:
+   a. Executar DFS recursivamente no vizinho
+
+SAÍDA: 
+    - componente preenchido com todos os vértices conectados
+
+ANÁLISE DE COMPLEXIDADE:
+=======================
+
+COMPLEXIDADE DE TEMPO:
+- DFS visita cada vértice exatamente uma vez: O(V)
+- DFS examina cada aresta exatamente duas vezes: O(E)
+- Ordenação dos componentes: O(V log V) no pior caso
+- TOTAL: O(V + E + V log V) = O(V log V + E)
+
+COMPLEXIDADE DE ESPAÇO:
+- Lista de adjacência: O(V + E)
+- Array visitado: O(V)
+- Pilha de recursão (DFS): O(V) no pior caso
+- Armazenamento dos componentes: O(V)
+- TOTAL: O(V + E)
+
+CASOS DE TESTE:
+==============
+
+EXEMPLO 1:
+Entrada: 3 vértices (a,b,c), 1 aresta (a-c)
+Grafo: a---c   b
+Componentes: {a,c}, {b}
+Saída: "a,c," e "b,"
+
+EXEMPLO 2:
+Entrada: 10 vértices, 10 arestas
+Componentes esperados: 3
+- Componente 1: {a,b,c,g}
+- Componente 2: {d,e,f}
+- Componente 3: {h,i,j}
+
+INVARIANTES DO ALGORITMO:
+========================
+
+1. INVARIANTE DA DFS:
+   - Todos os vértices marcados como visitados estão no componente atual
+   - Todos os vértices conectados serão eventualmente visitados
+
+2. INVARIANTE DO LOOP PRINCIPAL:
+   - Após processar vértice i, todos os componentes contendo vértices ≤ i foram encontrados
+   - Nenhum vértice é contado em mais de um componente
+
+3. INVARIANTE DE CORREÇÃO:
+   - Cada componente encontrado é maximal (não pode ser estendido)
+   - Todos os componentes são disjuntos (sem intersecção)
+
+CASOS ESPECIAIS:
+===============
+
+1. GRAFO VAZIO (E = 0):
+   - Cada vértice é um componente isolado
+   - Resultado: V componentes de tamanho 1
+
+2. GRAFO COMPLETO:
+   - Todos os vértices conectados
+   - Resultado: 1 componente de tamanho V
+
+3. GRAFO LINEAR (a-b-c-d-...):
+   - Todos os vértices em sequência
+   - Resultado: 1 componente de tamanho V
+
+4. VÉRTICES ISOLADOS:
+   - Vértices sem arestas
+   - Cada um forma componente de tamanho 1
