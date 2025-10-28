@@ -1,0 +1,88 @@
+=== INICIANDO TESTES DA OFICINA ===
+
+--- Cadastrando Serviços ---
+4 serviços cadastrados com sucesso!
+
+--- Cadastrando Mecânicos ---
+3 mecânicos cadastrados:
+  - João Silva (Especialidade: CARRO)
+  - Pedro Santos (Especialidade: MOTO)
+  - Carlos Oliveira (Especialidade: CAMINHAO)
+
+--- Cadastrando Clientes e Veículos ---
+Cliente 1: Maria Costa - 3 veículos
+Cliente 2: José Almeida - 2 veículos
+Cliente 3: Ana Paula - 1 veículo
+Cliente 4: Roberto Lima - 2 veículos
+Cliente 5: Fernanda Souza - 3 veículos
+
+--- Criando Ordens de Serviço ---
+OS 1: Maria Costa - Corolla - Troca de Óleo
+OS 2: José Almeida - Onix - Alinhamento e Balanceamento
+OS 3: Ana Paula - FH 540 - Revisão Completa
+OS 4: Roberto Lima - Argo - Troca de Pastilhas de Freio
+OS 5: Fernanda Souza - Biz 125 - Troca de Óleo
+
+--- Simulando Reparos ---
+
+Ordem 1:
+  Cliente: Maria Costa
+  Veículo: Corolla - ABC-1234
+  Mecânico: João Silva
+  Serviço: Troca de Óleo
+  Status inicial: AGUARDANDO
+  Status após reparo: CONCLUIDO
+
+Ordem 2:
+  Cliente: José Almeida
+  Veículo: Onix - DEF-1111
+  Mecânico: João Silva
+  Serviço: Alinhamento e Balanceamento
+  Status inicial: AGUARDANDO
+  Status após reparo: CONCLUIDO
+
+Ordem 3:
+  Cliente: Ana Paula
+  Veículo: FH 540 - GHI-3333
+  Mecânico: Carlos Oliveira
+  Serviço: Revisão Completa
+  Status inicial: AGUARDANDO
+  Status após reparo: CONCLUIDO
+
+Ordem 4:
+  Cliente: Roberto Lima
+  Veículo: Argo - JKL-4444
+  Mecânico: João Silva
+  Serviço: Troca de Pastilhas de Freio
+  Status inicial: AGUARDANDO
+  Status após reparo: CONCLUIDO
+
+Ordem 5:
+  Cliente: Fernanda Souza
+  Veículo: Biz 125 - MNO-7777
+  Mecânico: Pedro Santos
+  Serviço: Troca de Óleo
+  Status inicial: AGUARDANDO
+  Status após reparo: CONCLUIDO
+
+=== TESTES CONCLUÍDOS ===
+
+--- Teste: criarOrdemServico() - Serviço Indisponível (Exceção) ---
+Tentando criar ordem com serviço indispon   ível...
+Exceção tratada corretamente
+Resultado: PASSOU
+
+
+--- Teste: criarOrdemServico() - Veículo Não Encontrado (Exceção) ---
+Tentando criar ordem com veículo de outro cliente...
+Erro ao criar ordem de serviço: Veículo não encontrado para o Cliente
+Exceção tratada corretamente
+Resultado: PASSOU
+
+
+--- Teste: criarOrdemServico() - Mecânico Não Especializado (Exceção) ---
+Tentando criar ordem com mecânico de especialidade diferente...
+Erro ao criar ordem de serviço: Mecânico não especializado para este tipo de veículo
+Exceção tratada corretamente
+Resultado: PASSOU
+
