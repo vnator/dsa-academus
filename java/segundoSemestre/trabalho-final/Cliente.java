@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 class Cliente extends Pessoa {
     String endereco;
     String telefone;

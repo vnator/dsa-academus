@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 class Oficina {
     private String nome;
     private List<Cliente> clientes;
