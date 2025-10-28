@@ -18,7 +18,7 @@ echo "2. Compilando classes..."
 
 # Compilar exceções primeiro
 echo "   - Compilando exceções..."
-javac -d build exceptions/*.java
+javac -d build ServicoIndisponivelException.java VeiculoNaoEncontradoException.java MecanicoNaoEspecializadoException.java
 if [ $? -ne 0 ]; then
     echo "   ✗ Erro ao compilar exceções"
     exit 1
