@@ -8,7 +8,6 @@ public class Baralho {
     public Baralho() {
         cartas = new ArrayList<>();
         
-        // Inicializar baralho com todas as 52 cartas
         for (Naipe naipe : Naipe.values()) {
             for (Valor valor : Valor.values()) {
                 cartas.add(new Carta(valor, naipe));
