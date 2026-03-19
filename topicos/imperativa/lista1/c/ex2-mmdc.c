@@ -67,7 +67,7 @@ int main() {
     while (true) {
       int p = prime_num_list[prime_count - 1];
 
-      if (input_a % p == 0 && input_b % p == 0) {
+      if (max % p == 0) {
         min = p;
         break;
       }
