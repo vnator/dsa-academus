@@ -22,7 +22,7 @@ function findMinMaxCommonDivisor() {
   while(true) {
     const lastPrime = primeNumberList[primeNumberList.length-1];
 
-    if !((max % lastPrime)) {
+    if !((max % lastPrime) {
       min = lastPrime;
       break;
     }
