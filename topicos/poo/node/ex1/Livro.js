@@ -1,0 +1,23 @@
+export default class Livro {
+  #ISBN;
+  titulo;
+  autor;
+  leitores;
+
+  constructor(ISBN, titulo, autor) {
+    this.ISBN = ISBN;
+    this.titulo = titulo;
+    this.autor = autor;
+    this.leitores = [];
+  }
+
+  incluirLeitor(leitor) {
+    this.leitores.push(leitor);
+  }
+
+  imprimirLeitores() {
+    for (String leitor : this.leitores) {
+      System.out.println(leitor + " esta lendo " + this.titulo);
+    }
+  }
+}
