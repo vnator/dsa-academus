@@ -2,5 +2,11 @@
     "files.associations": {
         "matriz.h": "c",
         "set": "cpp"
+    },
+    "chat.tools.terminal.autoApprove": {
+        "/^cd /home/jhserodio/dev/dsa-academus/topicos/poo/java/ex3 && javac \\*\\.java && java main$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
     }
 }
