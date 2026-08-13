@@ -56,6 +56,7 @@ Vamos focar em memoization, divide and conquer e outros metodos computacionais p
 *   **Fórmula de Pick**: $A = i + \frac{b}{2} - 1$, onde $A$ é a área, $i \in \mathbb{N}$ (pontos internos) e $b \in \mathbb{N}$ (pontos na borda).
 *   **Fórmula de Polya**: $|Y^X/G| = \frac{1}{|G|} \sum_{g \in G} m^{c(g)}$, onde $G$ é o grupo de permutações e $c(g)$ é o número de ciclos.
 
+---
 
 ### 🔗 Grupo 6: Operações entre Conjuntos e Álgebra Booleana
 
