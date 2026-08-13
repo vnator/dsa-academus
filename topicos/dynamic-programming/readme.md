@@ -2,6 +2,7 @@
 Vamos focar em memoization, divide and conquer e outros metodos computacionais para funcoes matemáticas fundamentais.
 
 ## Algoritmos Matemáticos
+Problemas comuns matemáticos abordados em problemas de programacao, mas focados em matematica elementar, teoria dos numeros e geometria.
 
 ### 📊 Grupo 1: Fundamentos Absolutos e Otimização de Arrays
 
