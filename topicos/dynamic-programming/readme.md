@@ -1,67 +1,75 @@
-# Topicos para estudarmos
-Vamos focar em memoization, divide and conquer e outros metodos computacionais para funcoes matemáticas fundamentais.
-
-## Algoritmos Matemáticos
-Problemas comuns matemáticos abordados em problemas de programacao, mas focados em matematica elementar, teoria dos numeros e geometria.
-
-### 📊 Grupo 1: Fundamentos Absolutos e Otimização de Arrays
-
-*   **Algoritmo de Kadane**: $\max_{i \le j} \sum_{k=i}^j A[k]$, para um array $A$ de inteiros.
-*   **Potência (Exponenciação Rápida)**: $x^n = (x^{n/2})^2$ se $n \equiv 0 \pmod 2$, ou $x \cdot (x^{(n-1)/2})^2$ se $n \equiv 1 \pmod 2$.
-*   **Soma da Progressão Aritmética**: $S_n = \frac{n(a_1 + a_n)}{2}$, para $n \in \mathbb{N}^*$.
-*   **Soma da Progressão Geométrica**: $S_n = \frac{a_1(q^n - 1)}{q - 1}$, para $q \neq 1$.
-*   **Logaritmo**: $\log_b(x) = y \iff b^y = x$, para $b, x \in \mathbb{R}_+^* \land b \neq 1$.
-*   **Logaritmo Natural**: $\ln(x) = \log_e(x)$, para $x \in \mathbb{R}_+^* \land e \approx 2.718$.
+# Otimização Algorítmica e Matemática Computacional
+Vamos focar em *memoization*, *divide and conquer* e métodos computacionais para funções matemáticas fundamentais, progredindo do básico ao avançado.
 
 ---
 
-### 🔢 Grupo 2: Teoria dos Números e Aritmética Modular
+### 🚀 Módulo 1: Fundamentos Algébricos e *Divide and Conquer* (Dividir para Conquistar)
+*O foco deste artigo inicial é mostrar como abordagens ingênuas $O(n)$ podem ser transformadas em $O(\log n)$ usando Divisão e Conquista.*
 
-*   **Aritmética dos Restos**: $(a \cdot b) \pmod m = [(a \pmod m) \cdot (b \pmod m)] \pmod m$.
-*   **Máximo Divisor Comum**: $\text{mdc}(a, b) = \max \{ d \in \mathbb{Z} : d \mid a \land d \mid b \}$.
-*   **Mínimo Múltiplo Comum**: $\text{mmc}(a, b) = \frac{|a \cdot b|}{\text{mdc}(a, b)}$, para $a, b \neq 0$.
-*   **Crivo de Eratóstenes**: $P = \{ p \in \mathbb{N} : 2 \le p \le n \land (\forall d \in \mathbb{N}, d \mid p \implies d = 1 \lor d = p) \}$.
-*   **Algoritmo de Euclides Estendido**: $ax + by = \text{mdc}(a, b)$, para $a, b, x, y \in \mathbb{Z}$.
-*   **Inverso Multiplicativo Modular**: $a \cdot a^{-1} \equiv 1 \pmod m$, onde $\text{mdc}(a, m) = 1$.
-*   **Pequeno Teorema de Fermat**: $a^{p-1} \equiv 1 \pmod p$, para $p$ primo $\land \text{mdc}(a, p) = 1$.
-*   **Função Totiente de Euler**: $\phi(n) = |\{ k \in \mathbb{N} : 1 \le k \le n \land \text{mdc}(k, n) = 1 \}|$.
-*   **Teorema Chinês dos Restos**: $x \equiv a_i \pmod{m_i}$, onde $\text{mdc}(m_i, m_j) = 1$ para $i \neq j$.
-*   **Critério de Divisibilidade por Código**: $n \equiv 0 \pmod d \iff f(\text{dígitos de } n) \equiv 0 \pmod d$.
+*   **Potência (Exponenciação Rápida)**: $x^n = (x^{n/2})^2$. O exemplo mais puro de *Divide and Conquer*.
+*   **Método da Bisseção / Busca Binária Contínua**: Encontrar raízes de funções contínuas (ex: calcular $\sqrt{x}$ ou $\log_b(x)$) reduzindo o intervalo de busca pela metade a cada passo.
+*   **Somas de PA e PG**: $S_n = \frac{n(a_1 + a_n)}{2}$ e $S_n = \frac{a_1(q^n - 1)}{q - 1}$. Como evitar loops $O(n)$ usando matemática direta $O(1)$.
+*   **Logaritmos**: $\log_b(x)$ e $\ln(x)$. Aplicações em análise de complexidade de algoritmos.
 
 ---
 
-### 🎲 Grupo 3: Combinatória, Contagem e Estruturas Discretas
+### 🧠 Módulo 2: Otimização de Arrays e Estado Linear (*Dynamic Programming* Básica)
+*Transição suave para Programação Dinâmica e processamento de dados contínuos.*
 
-*   **Princípio Fundamental da Contagem**: $\text{Total} = \prod_{i=1}^k n_i$, para $k$ etapas com $n_i$ opções cada.
-*   **Triângulo de Pascal**: $\binom{n}{k} = \binom{n-1}{k-1} + \binom{n-1}{k}$, para $n, k \in \mathbb{N} \land n \ge k$.
-*   **Binômio de Newton**: $(x + y)^n = \sum_{k=0}^n \binom{n}{k} x^{n-k} y^k$, para $n \in \mathbb{N}$.
-*   **Fatorial**: $n! = \prod_{i=1}^n i$, para $n \in \mathbb{N} \land 0! = 1$.
-*   **Permutação com Repetição**: $P_n^{n_1, n_2, \dots, n_k} = \frac{n!}{n_1! \cdot n_2! \dots n_k!}$, onde $\sum_{i=1}^k n_i = n$.
-*   **Princípio da Inclusão-Exclusão**: $|A \cup B| = |A| + |B| - |A \cap B|$.
-*   **Princípio de Pigeonhole**: $\exists k : |R_k| \ge \lceil n/m \rceil$, para $n$ pombos distribuídos em $m$ caixas.
-*   **Números de Catalan**: $C_n = \frac{1}{n+1} \binom{2n}{n}$, para $n \in \mathbb{N}$.
+*   **Algoritmo de Kadane**: $\max_{i \le j} \sum_{k=i}^j A[k]$. Como encontrar a soma contígua máxima em $O(n)$ usando estado cumulativo.
+*   **Array de Somas de Prefixos (Prefix Sums)**: $P[i] = P[i-1] + A[i]$. Como responder a múltiplas consultas de soma em intervalos em $O(1)$ após um pré-processamento $O(n)$.
+*   **Critérios de Divisibilidade Computacional**: Verificações rápidas sem usar operador de módulo repetidamente (ex: soma de dígitos).
 
 ---
 
-### 🔄 Grupo 4: Sequências Recursivas e Simulação
+### 🔢 Módulo 3: Teoria dos Números Computacional (Algoritmos Gulosos e Crivos)
+*Focado em manipular números inteiros com extrema eficiência e processamento em lote.*
 
-*   **Fibonacci**: $F_n = F_{n-1} + F_{n-2}$, para $n \ge 2 \land F_0=0, F_1=1$.
-*   **Fórmula de Binet**: $F_n = \frac{\phi^n - \psi^n}{\sqrt{5}}$, onde $\phi = \frac{1+\sqrt{5}}{2} \land \psi = \frac{1-\sqrt{5}}{2}$.
-*   **Sequência de Collatz**: $f(n) = \frac{n}{2}$ se $n \equiv 0 \pmod 2$, ou $3n+1$ se $n \equiv 1 \pmod 2$.
-*   **Torre de Hanói**: $H_n = 2^n - 1$, representando o número mínimo de movimentos para $n$ discos.
-
----
-
-### 📐 Grupo 5: Geometria Discreta e Contagem Avançada
-
-*   **Fórmula de Pick**: $A = i + \frac{b}{2} - 1$, onde $A$ é a área, $i \in \mathbb{N}$ (pontos internos) e $b \in \mathbb{N}$ (pontos na borda).
-*   **Fórmula de Polya**: $|Y^X/G| = \frac{1}{|G|} \sum_{g \in G} m^{c(g)}$, onde $G$ é o grupo de permutações e $c(g)$ é o número de ciclos.
+*   **Aritmética dos Restos**: Prevenção de *overflow* em programação. Propriedades distributivas do módulo.
+*   **Máximo Divisor Comum (Algoritmo de Euclides)**: Um exemplo brilhante de recursão rápida.
+*   **Mínimo Múltiplo Comum**: $\text{mmc}(a, b) = \frac{|a \cdot b|}{\text{mdc}(a, b)}$.
+*   **Crivo de Eratóstenes**: Geração de números primos em tempo $O(N \log \log N)$.
+*   **Fatoração de Inteiros (Trial Division otimizado)**: Como fatorar um número usando primos gerados pelo Crivo até $\sqrt{N}$.
 
 ---
 
-### 🔗 Grupo 6: Operações entre Conjuntos e Álgebra Booleana
+### 🛡️ Módulo 4: Teoria dos Números Avançada (Criptografia e Inversos)
+*A matemática por trás do RSA e da segurança digital. Ideal para artigos mais técnicos.*
 
-*   **União**: $A \cup B = \{ x : x \in A \lor x \in B \}$. Equivalente ao operador lógico OR (`|` ou `||`).
-*   **Intersecção**: $A \cap B = \{ x : x \in A \land x \in B \}$. Equivalente ao operador lógico AND (`&` ou `&&`).
-*   **Diferença**: $A \setminus B = \{ x : x \in A \land x \notin B \}$. Retorna elementos exclusivos de $A$ em relação a $B$.
-*   **Complementar**: $A^c = \{ x \in U : x \notin A \}$, dado um universo $U$. Equivalente à negação lógica NOT (`!` ou `~`).
+*   **Algoritmo de Euclides Estendido**: $ax + by = \text{mdc}(a, b)$. O algoritmo que "roda de trás para frente".
+*   **Inverso Multiplicativo Modular**: Essencial para fazer divisões dentro da aritmética modular (usando Fermat ou Euclides Estendido).
+*   **Pequeno Teorema de Fermat**: $a^{p-1} \equiv 1 \pmod p$.
+*   **Função Totiente de Euler**: $\phi(n)$.
+*   **Teste de Primalidade de Miller-Rabin**: Um algoritmo probabilístico poderoso. Uma das melhores aplicações práticas da Exponenciação Rápida e Teoria dos Números juntas.
+
+---
+
+### 🔄 Módulo 5: Sequências, Árvores de Decisão e *Memoization*
+*O "coração" da sua série: onde a matemática encontra as limitações de tempo e espaço da CPU.*
+
+*   **Fibonacci**: De recursão ingênua $O(2^n)$ para *Memoization* (Top-Down) e *Tabulation* (Bottom-Up) $O(n)$.
+*   **Sequência de Collatz**: O uso de Dicionários/Hash Maps (*Memoization*) para memorizar caminhos já calculados e economizar saltos recursivos.
+*   **Torre de Hanói**: O poder da recursão para gerenciar subproblemas idênticos.
+*   **Exponenciação de Matrizes (Matrix Exponentiation)**: A técnica *masterclass* para calcular o n-ésimo termo de Fibonacci ou qualquer recorrência linear em incríveis $O(\log n)$, unindo *Divide and Conquer* com Álgebra Linear!
+
+---
+
+### 🎲 Módulo 6: Combinatória Computacional e Inclusão-Exclusão
+*Como calcular possibilidades gigantescas em tempo hábil e aplicando módulo.*
+
+*   **Fatorial e Princípio Fundamental da Contagem**: Pré-computação de fatoriais para consultas rápidas.
+*   **Binômio de Newton e Permutação com Repetição**: Cálculo de anagramas e coeficientes.
+*   **Triângulo de Pascal**: Construção via matriz e Programação Dinâmica $\binom{n}{k} = \binom{n-1}{k-1} + \binom{n-1}{k}$.
+*   **Desarranjos (Derangements / Subfatorial)**: O número de permutações onde nenhum elemento está em sua posição original. (Exemplo clássico de modelagem de Programação Dinâmica: $D_n = (n-1)(D_{n-1} + D_{n-2})$).
+*   **Números de Catalan**: Aplicação em estruturas de dados (ex: quantas árvores binárias diferentes podemos formar?).
+*   **Princípio da Inclusão-Exclusão**: Calculando áreas de intersecção complexas.
+
+---
+
+### 📐 Módulo 7: Geometria Discreta e Teoria dos Conjuntos
+*Processamento visual e bitwise.*
+
+*   **Fórmula de Pick**: $A = i + \frac{b}{2} - 1$. Álgebra aplicada a grades bidimensionais (Grids).
+*   **Fórmula de Shoelace (Área de Gauss)**: O par perfeito para Pick. Calcula a área de qualquer polígono a partir das coordenadas de seus vértices. Computacionalmente excelente por usar apenas multiplicações e somas cruzadas num array bidimensional.
+*   **Álgebra Booleana e Bitwise Operations**: Usar representação binária (`&`, `|`, `^`, `~`) para simular União, Intersecção e Diferença de conjuntos de forma ultra veloz.
+*   **Fórmula de Polya/Burnside**: Contagem de grafos e formas geométricas considerando simetrias (rotações e reflexões).
