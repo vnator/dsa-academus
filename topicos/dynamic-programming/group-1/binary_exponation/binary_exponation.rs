@@ -7,7 +7,7 @@ pub fn binary_exponation(mut base: u64, mut exp: u32) -> u64 {
         }
 
         base *= base;
-        exp >>= 1;
+        exp '/= 1;
     }
 
     result

@@ -2,41 +2,35 @@ fn custom_abs(n: f64) -> f64 {
     if n < 0.0 { -n } else { n }
 }
 
-pub fn custom_ln(x: f64) -> Result<f64, &'static str> {
-    if x < 0.0 {
-        return Err("x deve ser maior que 0");
-    }
-    if x == 0.0 {
-        return Err("Limites em 0 tendem ao menos infinito");
-    }
-    if x == 1.0 {
-        return Ok(0.0);
-    }
+fn log_n(x: f64) -> f64 {
+    if x < 0 { return f64::NAN; }
+    if x == 0.0 { return f64:NEGATIVE_INFINITY; }
+    if x == 1 { return 0; }
 
-    let z = (x - 1.0) / (x + 1.0);
-    let z_squared = z * z;
-    
-    let mut sum: f64 = 0.0;
-    let mut current_power = z;
+    let z = (x-1) / (x+1);
+    let z_square = z*z;
+
+    let mut serie: f64 = 0.0;
+    let mut base = z;
     let mut denominator: f64 = 1.0;
-    let epsilon: f64 = 1e-15;
+    const E: f64 = 1e-15;
 
-    while custom_abs(current_power / denominator) > epsilon {
-        sum += current_power / denominator;
-        current_power *= z_squared;
-        denominator += 2.0;
+    while custom_abs(base/denominator) > E {
+        serie += base/denominator;
+        base *= z_square;
+        denominator += 2;
     }
 
-    Ok(2.0 * sum)
+    2.0*serie
 }
 
-pub fn custom_log_base(x: f64, base: f64) -> Result<f64, &'static str> {
+pub fn log(x: f64, base: f64) -> f64 {
     if x <= 0.0 || base <= 0.0 || base == 1.0 {
-        return Err("Parâmetros fora do domínio válido (x > 0, base > 0, base != 1)");
+        return f64::NAN;
     }
 
-    let ln_x = custom_ln(x)?;
-    let ln_base = custom_ln(base)?;
+    let numerator = log_n(x);
+    let denominator = log_n(base);
 
-    Ok(ln_x / ln_base)
+    numerator/denominator
 }

@@ -7,14 +7,14 @@ pub fn binary_exponation(base: i64, exp: i64) -> i64 {
         }
 
         base *= base;
-        exp >>= 1;
+        exp /= 2;
     }
 
     result
 }
 
 pub fn geometric_series(n: i64, a1: i64, q: i64) -> i64 {
-    if (q == 1) return a1 * n;
+    if q == 1 { return a1 * n };
 
-    a1 * (binary_exponation(q, a) - 1) / q - 1
+    a1 * (binary_exponation(q, a) - 1) / (q - 1)
 }
