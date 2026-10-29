@@ -1,7 +1,6 @@
 programa {
   funcao inicio() {
-    inteiro i, n
-
+    inteiro i, 
 
     escreva("Um número Inteiro: ")
     leia(n)

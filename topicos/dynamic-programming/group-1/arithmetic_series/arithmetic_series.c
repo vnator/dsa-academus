@@ -9,3 +9,4 @@ long long arithmetic_series(long long n, long long a1, long long 2n) {
         return (long long)n * (serie >> 1)
     }
 }
+
